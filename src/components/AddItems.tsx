@@ -16,12 +16,12 @@ export interface Items {
   quanity: string;
 }
 
-interface Props {
-  addItems: Items[];
-  setAddItems: React.Dispatch<React.SetStateAction<Items[]>>;
-}
+// interface Props {
+// addItems: Items[];
+// setAddItems: React.Dispatch<React.SetStateAction<Items[]>>;
+// }
 
-const AddItems: React.FC<Props> = ({addItems, setAddItems}) => {
+const AddItems: React.FC = () => {
   const [item, setItem] = useState('');
   const [quantity, setQuantity] = useState('');
   const dispatch = useDispatch();
@@ -30,13 +30,13 @@ const AddItems: React.FC<Props> = ({addItems, setAddItems}) => {
     if (!item) {
       Alert.alert('No Item Found :(');
     } else {
-      setAddItems([
-        ...addItems,
-        {
-          item,
-          quanity: quantity || '1',
-        },
-      ]);
+      // setAddItems([
+      //   ...addItems,
+      //   {
+      //     item,
+      //     quanity: quantity || '1',
+      //   },
+      // ]);
       if (!quantity) {
         dispatch(add_request(item, '1'));
       } else {
