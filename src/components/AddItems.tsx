@@ -9,11 +9,13 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {add_request} from '../redux/actions/Item-action/Item-action';
+// import firestore from '@react-native-firebase/firestore';
 
 //export because we need to use it in another components
 export interface Items {
   item: string;
   quanity: string;
+  id: string;
 }
 
 // interface Props {
@@ -25,6 +27,8 @@ const AddItems: React.FC = () => {
   const [item, setItem] = useState('');
   const [quantity, setQuantity] = useState('');
   const dispatch = useDispatch();
+
+  // const itemsCollection = firestore().collection('Items');
 
   const addingItems = () => {
     if (!item) {
@@ -41,6 +45,10 @@ const AddItems: React.FC = () => {
         dispatch(add_request(item, '1'));
       } else {
         dispatch(add_request(item, quantity));
+        // itemsCollection.add({
+        //   item: item,
+        //   quantity: quantity,
+        // });
       }
       setItem('');
       setQuantity('');

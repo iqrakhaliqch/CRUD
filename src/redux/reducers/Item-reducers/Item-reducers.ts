@@ -15,6 +15,14 @@ const itemReducers = (state: mainState = initialState, action: requests) => {
         ...state,
         items: [...state.items, action.payload],
       };
+    case 'DELETE_ITEM':
+      return {
+        ...state,
+      };
+    case 'UPDATE_ITEM':
+      return {
+        ...state,
+      };
     default:
       return state;
   }

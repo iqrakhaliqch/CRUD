@@ -2,11 +2,17 @@ import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {Items} from './AddItems';
 
-const ListItems: React.FC<Items> = ({item, quanity}) => {
+const ListItems: React.FC<Items> = ({item, quanity, id}) => {
+  const deleteItem = () => {
+    console.log('Delete', id);
+  };
+
+  const updateItem = () => {
+    console.log('Update', id);
+  };
+
   return (
-    <TouchableOpacity
-      onPress={() => console.log('Update')}
-      onLongPress={() => console.log('Delete')}>
+    <TouchableOpacity onPress={updateItem} onLongPress={deleteItem}>
       <View style={styles.mainContainer}>
         <Text style={styles.itemTxt}>{item}</Text>
         <Text style={styles.quantityTxt}>x{quanity}</Text>
