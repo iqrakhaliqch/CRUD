@@ -46,12 +46,13 @@ export const delete_request = (id: string) => {
   };
 };
 
-export const update_request = (id: string) => {
+export const update_request = (id: string, item: string, quantity: string) => {
   return async (dispatch: Dispatch<requests>) => {
     dispatch({
       type: 'UPDATE_ITEM',
-      payload: {id: id},
+      payload: {id: id, item: item, quantity: quantity},
     });
+    itemsCollection.doc(id).update({item: item, quantity: quantity});
   };
 };
 

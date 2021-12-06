@@ -3,20 +3,18 @@ import {FlatList, SafeAreaView, StyleSheet, View} from 'react-native';
 import AddItems from '../components/AddItems';
 import Header from '../components/Header';
 import ListItems from '../components/ListItems';
-import {ApplicationStates} from '../redux/reducers';
-import {useSelector} from 'react-redux';
+
 import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
 
-interface Props {
-  data: [];
-  setData: React.Dispatch<React.SetStateAction<[]>>;
-}
+// interface Props {
+//   data: [];
+//   setData: React.Dispatch<React.SetStateAction<[]>>;
+// }
 
 const Home: React.FC = () => {
-  const [data, setData] =
-    useState<FirebaseFirestoreTypes.DocumentData | null>();
+  const [data, setData] = useState<FirebaseFirestoreTypes.DocumentData>();
   //   const {items} = useSelector((state: ApplicationStates) => state.itemReducer);
 
   useEffect(() => {
@@ -29,7 +27,8 @@ const Home: React.FC = () => {
           setData(documentSnapshot.docs);
         }
       });
-  }, [2000]);
+  }, [data]);
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <Header title={'CRUD APP'} />
@@ -39,13 +38,7 @@ const Home: React.FC = () => {
       <FlatList
         data={data}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({item, index}) => (
-          <ListItems
-            item={item._data.item}
-            quanity={item._data.quantity}
-            id={item.id}
-          />
-        )}
+        renderItem={({item}) => <ListItems item={item} />}
       />
     </SafeAreaView>
   );
