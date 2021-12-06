@@ -33,6 +33,25 @@ const UpdateItems: React.FC<Props> = ({productName, id}) => {
     setQuantity('');
   };
 
+  const confirmation = () => {
+    Alert.alert('Confirmation', 'Are you want to Update the Item', [
+      {
+        text: 'Cancel',
+        onPress: () => {
+          console.log('Cancel Pressed');
+        },
+        style: 'cancel',
+      },
+      {
+        text: 'Okay',
+        onPress: () => {
+          console.log('Okay Pressed');
+          updatingItems();
+        },
+      },
+    ]);
+  };
+
   return (
     <View style={styles.main}>
       <Text style={styles.mainHeading}>Update Items</Text>
@@ -53,7 +72,7 @@ const UpdateItems: React.FC<Props> = ({productName, id}) => {
           style={styles.quantityInput}
         />
       </View>
-      <TouchableOpacity style={styles.btn} onPress={updatingItems}>
+      <TouchableOpacity style={styles.btn} onPress={confirmation}>
         <Text style={styles.btnTxt}>Update</Text>
       </TouchableOpacity>
     </View>
