@@ -39,9 +39,7 @@ const ListItems: React.FC<Items> = ({item}) => {
 
   const updateItem = () => {
     console.log('Update', item.id);
-    // navigation.navigate('Update', {item: item});
     navigation.navigate('Update', {item: item._data, id: item.id});
-    navigation.setParams({item: item._data, id: item.id});
   };
 
   return (

@@ -8,13 +8,8 @@ import firestore, {
   FirebaseFirestoreTypes,
 } from '@react-native-firebase/firestore';
 
-// interface Props {
-//   data: [];
-//   setData: React.Dispatch<React.SetStateAction<[]>>;
-// }
-
 const Home: React.FC = () => {
-  const [data, setData] = useState<FirebaseFirestoreTypes.DocumentData>();
+  const [data, setData] = useState<FirebaseFirestoreTypes.DocumentData[]>();
   //   const {items} = useSelector((state: ApplicationStates) => state.itemReducer);
 
   useEffect(() => {
